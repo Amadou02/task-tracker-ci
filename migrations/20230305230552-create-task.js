@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const { DataTypes, QueryInterface } = require('sequelize');
+const { DataTypes, QueryInterface } = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   /**
@@ -8,7 +8,7 @@ module.exports = {
    * @param {DataTypes} DataTypes
    */
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('tasks', {
+    await queryInterface.createTable("tasks", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -35,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('asks');
+    await queryInterface.dropTable("asks");
   },
 };

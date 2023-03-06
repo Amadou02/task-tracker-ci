@@ -1,5 +1,5 @@
-'use strict';
-const { Model, DataTypes, Sequelize } = require('sequelize');
+"use strict";
+const { Model, DataTypes, Sequelize } = require("sequelize");
 /**
  *
  * @param {Sequelize} sequelize
@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Task',
-      tableName: 'tasks',
+      modelName: "Task",
+      tableName: "tasks",
     }
   );
   return Task;
