@@ -34,7 +34,7 @@ jobs:
       # with:
       #  path: public/
   deploy:
-    depend-on: build
+    needs: build
     runs-on: ubuntu-lates
     steps:
       - name: Download a Build Artifact
