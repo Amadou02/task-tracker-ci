@@ -6,8 +6,8 @@ name: Node.js CI/CD
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
   build:
@@ -31,10 +31,10 @@ jobs:
 #     - run: npm test
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
-      with:
-       path: public/
+      # with:
+      #  path: public/
   deploy:
-    if: github.ref == 'refs/heads/main'
+    depend-on: build
     runs-on: ubuntu-lates
     steps:
       - name: Download a Build Artifact
@@ -44,7 +44,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "dist/"
+          # SOURCE: ""
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
