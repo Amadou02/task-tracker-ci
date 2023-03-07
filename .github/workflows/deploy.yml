@@ -17,11 +17,17 @@ jobs:
       run: npm install
     - name: Run build task
       run: npm run build --if-present
+
+       # Adding Known Hosts
+    - name: Adding Known Hosts
+      run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # Installing ssh key
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@main
       env:
-        SCRIPT_BEFORE: ls
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SCRIPT_BEFORE: ls
         ARGS: "-rlgoDzvc -i --delete"
         SOURCE: "dist/"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
